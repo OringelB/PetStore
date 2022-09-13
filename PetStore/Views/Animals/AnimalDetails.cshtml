@@ -1,0 +1,77 @@
+﻿@model PetStore.Models.Comment
+
+@{
+    ViewData["Title"] = "AnimalDetails";
+}
+<h1>@ViewBag.AnimalById.Name Details</h1>
+ <table class="table">
+        <tr>
+            <td>
+            Picture
+            </td>
+             <td>
+               <img src="@ViewBag.AnimalById.Picture" alt="5" height="100" width="100" class="img-thumbnail zoom">
+
+             </td>
+        </tr>
+        <tr>
+            <td>
+            Name
+            </td>
+            <td>
+            @ViewBag.animalById.Name
+            </td>
+        </tr>
+        <tr>
+            <td>
+            Age
+            </td>
+            <td>
+            @ViewBag.animalById.Age
+            </td>
+        </tr>        <tr>
+            <td>
+            Description
+            </td>
+            <td>
+            @ViewBag.animalById.Description
+            </td>
+        </tr>        <tr>
+            <td>
+            Category
+            </td>
+            <td>
+            @ViewBag.animalById.Category.CategoryName
+            </td>
+        </tr>        
+    </table>
+
+    <h4>Comments</h4>
+      <ul class="list-group">
+
+    @foreach(var comment in @ViewBag.animalById.Comments)
+    {
+     <li class="list-group-item"> @comment.CommentData</li>
+    }
+    </ul>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="AnimalDetails">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="CommentData" class="control-label"></label>
+                <input asp-for="CommentData" class="form-control" />
+                <span asp-validation-for="CommentData" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AnimalId" hidden class="control-label">@ViewBag.AnimalById.AnimalId</label>
+                <input asp-for="AnimalId" hidden value="@ViewBag.AnimalById.AnimalId" class="form-control"/>
+            </div>
+            <div class="form-group col-sm-2 pt-0">
+                <input type="submit" value="Send" class="btn btn-primary"/>
+            </div>
+        </form>
+    </div>
+</div>
+

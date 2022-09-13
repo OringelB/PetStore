@@ -1,0 +1,54 @@
+﻿@model IEnumerable<PetStore.Models.Category>
+
+
+@{
+    ViewData["Title"] = "Catalogue";
+}
+
+<h2>Catalogue</h2>
+<div>
+</div>
+
+    <select  class="form-select" onchange="OnChangeEvent(this);">
+        <option value=0>Choose a category</option>
+        @foreach(var category in Model)
+        {
+         <option value=@category.CategoryId>@category.CategoryName</option>
+        }
+         <option value=0 >View All</option>
+    </select>
+  
+    <script type="text/javascript">
+ function OnChangeEvent(dropDownElement){
+  var selectedValue = dropDownElement.options[dropDownElement.selectedIndex].value;
+  document.location = "/Animals/Catalogue/" + selectedValue;
+ }
+
+</script>
+       <table class="table">
+  <tr>
+    <th>Portriat</th>
+    <th>Name</th>
+    <th>Find out more!</th>
+  </tr>
+     @foreach(var category in @ViewBag.categoryById)
+    {
+        @foreach(var animal in category.Animals!)
+            {
+                <tr>
+                    <td>
+                        <img src="@animal.Picture" alt="5" height="100" width="100" class="img-thumbnail zoom">
+
+                    </td>
+                    <td>
+                        @animal.Name
+                    </td>
+                    <td>
+                        <a asp-action="AnimalDetails" asp-route-id=@animal.AnimalId> Details </a> 
+                    </td>
+                </tr>
+            }
+    }
+
+ 
+</table>

@@ -1,0 +1,44 @@
+﻿@{
+    ViewData["Title"] = "HomePage";
+}
+
+
+
+<h2  class="wrapper fadeInDown" >Welcome to the best pet shop in town</h2>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Picture</th>
+      <th scope="col">Name</th>
+      <th scope="col">Descrption</th>
+      <th>Number Of Comments</th>
+    </tr>
+  </thead>
+  <tbody>
+       @foreach(var animal in Model)
+    {
+        <tr>
+            <td>
+
+                <img src="@animal.Picture" alt="5" height="100" width="100" class="img-thumbnail zoom">
+
+            </td>
+            <td>
+                @animal.Name
+            </td>
+            <td>
+                @animal.Description
+            </td>
+            <td>
+                @animal.Comments!.Count
+            </td>
+       
+       
+        </tr>
+    }
+
+
+ 
+  </tbody>
+</table>
+
