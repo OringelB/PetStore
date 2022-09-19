@@ -1,4 +1,3 @@
-Mvc Project 
-using sql lite for data base
-bootstrap
-
+Asp.net core web project 
+-Bootstrap 
+-Sql 
